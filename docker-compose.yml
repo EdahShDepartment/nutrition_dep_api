@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  nutrition_dep_api:
+    build: .
+    image: nutrition_dep_api
+    container_name: nutrition_dep_api-container
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    command: python wsgi.py
