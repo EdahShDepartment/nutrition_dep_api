@@ -7,9 +7,10 @@ WORKDIR /app
 # 複製 requirements.txt 進容器
 COPY requirements.txt .
 
+
+RUN apt-get update && apt-get install -y tini
 # 安裝 Python 套件
 RUN pip install --no-cache-dir -r requirements.txt
-RUN apt-get update && apt-get install -y tini
 
 # 複製專案所有檔案
 COPY . .
@@ -17,7 +18,7 @@ COPY . .
 ENTRYPOINT ["/usr/bin/tini", "--"]
 
 # 開放 Flask 預設的 5000 port
-EXPOSE 5000
+EXPOSE 5002
 
 # 啟動指令 (用 wsgi.py 啟動 Flask 專案)
 CMD ["python", "wsgi.py"]

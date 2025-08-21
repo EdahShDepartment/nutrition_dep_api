@@ -6,9 +6,7 @@ services:
     image: nutrition_dep_api
     container_name: nutrition_dep_api-container
     ports:
-      - "5000:5000"
+      - "5002:5002"
     volumes:
       - .:/app
-    env_file:
-      - .env
     command: python wsgi.py
